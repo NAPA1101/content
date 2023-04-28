@@ -1,0 +1,16 @@
+{
+    "holidays_table": {
+        "column": {
+            "entity_id": true,
+            "holiday_name": true,
+            "holiday_text": true,
+            "status": true,
+            "start_holiday": true,
+            "currect_day_holiday": true,
+            "end_holiday": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

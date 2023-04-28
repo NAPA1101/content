@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="holidays_table" resource="default" engine="innodb" comment="Holidays Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="varchar" name="holiday_name" nullable="false" comment="Holiday Name"/>
+        <column xsi:type="varchar" name="holiday_text" nullable="false" length="255" comment="Holiday Text"/>
+        <column xsi:type="smallint" name="status" padding="11" unsigned="false" nullable="false" default="0" comment="Status"/>
+        <column xsi:type="date" name="start_holiday" nullable="false" comment="Start Holiday"/>
+        <column xsi:type="date" name="currect_day_holiday" nullable="false"  comment="Currect Day Holiday"/>
+        <column xsi:type="date" name="end_holiday" nullable="false" comment="End Holiday"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

@@ -45,31 +45,29 @@
                 <item name="sortOrder" xsi:type="number">20</item>
             </item>
         </argument>
-        <field name="status">
+        <field name="status" formElement="select">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="sortOrder" xsi:type="number">10</item>
-                    <item name="dataType" xsi:type="string">boolean</item>
-                    <item name="formElement" xsi:type="string">checkbox</item>
-                    <item name="prefer" xsi:type="string">toggle</item>
-                    <item name="label" xsi:type="string" translate="true">Status</item>
-                    <item name="valueMap" xsi:type="array">
-                        <item name="true" xsi:type="number">1</item>
-                        <item name="false" xsi:type="number">0</item>
-                    </item>
-                    <item name="valuesForOptions" xsi:type="array">
-                        <item name="boolean" xsi:type="string">boolean</item>
-                    </item>
-                    <item name="default" xsi:type="number">1</item>
-                    <item name="dataScope" xsi:type="string">status</item>
+                    <item name="source" xsi:type="string">holidays</item>
                 </item>
             </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Perspective\Holidays\Model\Status"/>
+                    </settings>
+                </select>
+            </formElements>
         </field>
         <field name="holiday_name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">holiday_name</item>
+                    <item name="label" xsi:type="string" translate="true">Holiday name</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">holiday_name</item>
                     <item name="dataScope" xsi:type="string">holiday_name</item>
@@ -80,10 +78,43 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="label" xsi:type="string" translate="true">holiday_text</item>
+                    <item name="label" xsi:type="string" translate="true">Holiday text</item>
                     <item name="formElement" xsi:type="string">textarea</item>
                     <item name="source" xsi:type="string">holiday_text</item>
                     <item name="dataScope" xsi:type="string">holiday_text</item>
+                </item>
+            </argument>
+        </field>
+        <field name="start_holiday">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Start holiday</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">start_holiday</item>
+                    <item name="dataScope" xsi:type="string">start_holiday</item>
+                </item>
+            </argument>
+        </field>
+        <field name="currect_day_holiday">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Currect day holiday</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">currect_day_holiday</item>
+                    <item name="dataScope" xsi:type="string">currect_day_holiday</item>
+                </item>
+            </argument>
+        </field>
+        <field name="end_holiday">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">End holiday</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">end_holiday</item>
+                    <item name="dataScope" xsi:type="string">end_holiday</item>
                 </item>
             </argument>
         </field>

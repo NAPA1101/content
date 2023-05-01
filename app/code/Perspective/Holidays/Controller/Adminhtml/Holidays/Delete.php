@@ -3,16 +3,17 @@ namespace Perspective\Holidays\Controller\Adminhtml\Holidays;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
+use Perspective\Holidays\Model\Holidays;
 
 class Delete extends Action
 {
     protected $modelHolidays;
     public function __construct(
         Context $context,
-        \Perspective\Holidays\Model\Holidays $HolidaysFactory
+        Holidays $holidaysFactory
     ) {
         parent::__construct($context);
-        $this->modelHolidays = $model;
+        $this->modelHolidays = $holidaysFactory;
     }
 
     /**
@@ -30,7 +31,7 @@ class Delete extends Action
      */
     public function execute()
     {
-        $id = $this->getRequest()->getParam('Entity_id');
+        $id = $this->getRequest()->getParam('entity_id');
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($id) {

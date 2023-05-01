@@ -25,11 +25,11 @@ class Save extends Action
      */
     public function __construct(
         Action\Context $context,
-        Holidays $Holidaysmodel,
+        Holidays $holidaysModel,
         Session $adminsession
     ) {
         parent::__construct($context);
-        $this->holidaysmodel = $Holidaysmodel;
+        $this->holidaysModel = $holidaysModel;
         $this->adminsession = $adminsession;
     }
 
@@ -47,20 +47,20 @@ class Save extends Action
         if ($data) {
             $entity_id = $this->getRequest()->getParam('entity_id');
             if ($entity_id) {
-                $this->holidaysmodel->load($entity_id);
+                $this->holidaysModel->load($entity_id);
             }
 
-            $this->holidaysmodel->setData($data);
+            $this->holidaysModel->setData($data);
 
             try {
-                $this->holidaysmodel->save();
+                $this->holidaysModel->save();
                 $this->messageManager->addSuccess(__('The data has been saved.'));
                 $this->adminsession->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
                     if ($this->getRequest()->getParam('back') == 'add') {
                         return $resultRedirect->setPath('*/*/add');
                     } else {
-                        return $resultRedirect->setPath('*/*/edit', ['entity_id' => $this->Holidaysmodel->getEntityId(), '_current' => true]);
+                        return $resultRedirect->setPath('*/*/edit', ['entity_id' => $this->holidaysModel->getEntityId(), '_current' => true]);
                     }
                 }
 

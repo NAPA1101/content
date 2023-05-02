@@ -7,6 +7,9 @@
             </argument>
         </arguments>
     </type>
+<!--    <type name="Magento\Catalog\Pricing\Price\FinalPrice">-->
+<!--        <plugin name="change_final_price" type="Perspective\Holidays\Plugin\Price" sortOrder="1" disabled="false" />-->
+<!--    </type>-->
     <virtualType name="Perspective\Holidays\Model\ResourceModel\Holidays\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">holidays_table</argument>

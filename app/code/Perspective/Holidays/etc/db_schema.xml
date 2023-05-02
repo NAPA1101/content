@@ -9,6 +9,7 @@
         <column xsi:type="date" name="start_holiday" nullable="false" comment="Start Holiday"/>
         <column xsi:type="date" name="currect_day_holiday" nullable="false"  comment="Currect Day Holiday"/>
         <column xsi:type="date" name="end_holiday" nullable="false" comment="End Holiday"/>
+        <column xsi:type="int" name="discount" unsigned="true" nullable="false" comment="Discount"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>
         </constraint>

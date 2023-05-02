@@ -4,7 +4,8 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content.top">
-            <block name="currency.rate.block" template="Perspective_Holidays::index.phtml">
+            <block name="currency.rate.block"
+                   template="Perspective_Holidays::index.phtml">
                 <arguments>
                     <argument name="viewModel" xsi:type="object">Perspective\Holidays\ViewModel\Holidays</argument>
                 </arguments>

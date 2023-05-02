@@ -10,8 +10,7 @@ class Holidays extends AbstractModel implements IdentityInterface
     protected $_eventPrefix = 'perspective_holidays_holidays';
     protected function _construct()
     {
-        $this->_init
-        ('Perspective\Holidays\Model\ResourceModel\Holidays');
+        $this->_init('Perspective\Holidays\Model\ResourceModel\Holidays');
     }
     public function getIdentities()
     {

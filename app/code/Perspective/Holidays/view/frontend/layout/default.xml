@@ -5,6 +5,7 @@
     <body>
         <referenceContainer name="content.top">
             <block name="currency.rate.block"
+                   class="Magento\Catalog\Block\Product\View"
                    template="Perspective_Holidays::index.phtml">
                 <arguments>
                     <argument name="viewModel" xsi:type="object">Perspective\Holidays\ViewModel\Holidays</argument>

@@ -6,61 +6,98 @@ use Magento\Framework\Stdlib\DateTime\DateTime;
 use Perspective\Holidays\Model\ResourceModel\Holidays\CollectionFactory;
 use Perspective\Holidays\Helper\Data;
 use Magento\Framework\Registry;
+use Magento\Catalog\Model\Product;
 
 class Holidays implements ArgumentInterface
 {
-    protected $holidaysFactory;
 
+    /**
+     * @var Product
+     */
     protected $product;
+    /**
+     * @var DateTime
+     */
     private DateTime $date;
-    private Registry $registry;
+    /**
+     * @var Data
+     */
     private Data $helper;
+    /**
+     * @var CollectionFactory
+     */
     private CollectionFactory $collectionFactory;
+
 
     /**
      * @param DateTime $date
      * @param CollectionFactory $collectionFactory
      * @param Registry $registry
      * @param Data $helper
+     * @param Product $product
      */
     public function __construct(
         DateTime $date,
         CollectionFactory $collectionFactory,
         Registry $registry,
         Data $helper,
+        Product $product,
+
     ) {
         $this->date = $date;
         $this->registry = $registry;
         $this->helper = $helper;
         $this->collectionFactory = $collectionFactory;
+        $this->product = $product;
     }
 
-    public function getProduct()
+    /**
+     * @return bool
+     */
+    public function getEnabled(): bool
     {
-        return $this->registry->registry('current_product');
+        if ($this->helper->getHolidayModule('enable')) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function getPrice()
-    {
-        return $this->getProduct()->getFinalPrice();
-    }
-    public function getHolidays()
+    /**
+     * @return int
+     */
+    public function getMaxDiscount(): int
     {
         $collection = $this->collectionFactory->create();
         $discount = 0;
-        if ($this->helper->getHolidayModule('enable')) {
-            foreach ($collection as $item) {
-                if ($item->getData('start_holiday') <= $this->date->gmtDate()
-                    && $item->getData('end_holiday') >= $this->date->gmtDate()
-                    && $item->getData('status') == 1) {
-                    echo "Name: " . $item->getData('holiday_name') . "<br>" .
-                        " Text: " . $item->getData('holiday_text') .
-                        " Discount: " . $item->getData('discount');
+        foreach ($collection as $item) {
+            if ($discount <= $item->getData('discount')) {
+                $discount = $item->getData('discount');
+            }
+        }
+        return $discount;
+    }
 
+    /**
+     * @param $massNumber
+     * @return mixed|null
+     */
+    public function getHolidays($massNumber): mixed
+    {
+        $mass = [];
+        $collection = $this->collectionFactory->create();
+        if ($this->helper->getHolidayModule('enable')) {
+            foreach ($collection as $itemColl) {
+                    if ($itemColl->getData('start_holiday') <= $this->date->gmtDate()
+                        && $itemColl->getData('end_holiday') >= $this->date->gmtDate()
+                        && $itemColl->getData('status') == 1 && $this->getMaxDiscount() == $itemColl->getData('discount')) {
+                        $mass[] = $itemColl->getData('holiday_name');
+                        $mass[] = $itemColl->getData('holiday_text');
+                        $mass[] = $itemColl->getData('discount');
+                        return $mass[$massNumber];
+                    }
                 }
             }
-        } else {
-            return null;
-        }
+        return null;
     }
 }

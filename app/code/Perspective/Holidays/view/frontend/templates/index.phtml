@@ -1,4 +1,10 @@
 <?php
 $viewModel = $block->getData('viewModel');
+$product= $block->getProduct();
 ?>
-<h3> <?php $viewModel->getHolidays() ?> </h3>
+<?php if($viewModel->getEnabled()) {?>
+    <h3><?= $viewModel->getHolidays(0);?></h3>
+    <h4><?= $viewModel->getHolidays(1);?></h4>
+    <h4>Знижка <?= $viewModel->getHolidays(2);?>%!</h4>
+<?php }
+?>

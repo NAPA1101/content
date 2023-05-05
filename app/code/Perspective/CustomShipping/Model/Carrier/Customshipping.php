@@ -1,8 +1,10 @@
 <?php
 namespace Perspective\CustomShipping\Model\Carrier;
 
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;
 use Magento\Shipping\Model\Carrier\CarrierInterface;
@@ -35,6 +37,9 @@ class Customshipping extends AbstractCarrier implements CarrierInterface
     private $rateMethodFactory;
     private Session $session;
     private array $data;
+    private \Magento\Authorization\Model\UserContextInterface $userContext;
+    private CustomerRepositoryInterface $customerRepository;
+    private TimezoneInterface $timezone;
 
     /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
@@ -52,6 +57,9 @@ class Customshipping extends AbstractCarrier implements CarrierInterface
         \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory $rateMethodFactory,
         Data $helper,
         Session $session,
+        \Magento\Authorization\Model\UserContextInterface $userContext,
+        CustomerRepositoryInterface $customerRepository,
+        TimezoneInterface $timezone,
         array $data = []
     ) {
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
@@ -60,6 +68,9 @@ class Customshipping extends AbstractCarrier implements CarrierInterface
         $this->rateMethodFactory = $rateMethodFactory;
         $this->helper = $helper;
         $this->session = $session;
+        $this->userContext = $userContext;
+        $this->customerRepository = $customerRepository;
+        $this->timezone = $timezone;
     }
 
     /**
@@ -84,6 +95,8 @@ class Customshipping extends AbstractCarrier implements CarrierInterface
         if (!$this->getConfigFlag('active')) {
             return false;
         }
+
+        if ($this->getShowUser()) {
         /** @var \Magento\Shipping\Model\Rate\Result $result */
         $result = $this->rateResultFactory->create();
 
@@ -107,13 +120,13 @@ class Customshipping extends AbstractCarrier implements CarrierInterface
                 }
             }
         }
-
         $method->setPrice($shippingCost);
         $method->setCost($shippingCost);
 
         $result->append($method);
 
         return $result;
+        }
     }
 
     /**
@@ -122,5 +135,20 @@ class Customshipping extends AbstractCarrier implements CarrierInterface
     public function getAllowedMethods()
     {
         return [$this->_code => $this->getConfigData('name')];
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getShowUser()
+    {
+        if ($this->userContext->getUserId() != 0) {
+            $customer = $this->customerRepository->getById($this->userContext->getUserId());
+            $countOfYears = $this->timezone->date()->format('Y') - $this->timezone->date(strtotime($customer->getDob()))->format('Y');
+            if ($countOfYears > 60) {
+                return true;
+            }
+        }
+        return false;
     }
 }

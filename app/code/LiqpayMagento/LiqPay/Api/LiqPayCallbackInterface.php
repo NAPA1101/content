@@ -8,10 +8,14 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use \Magento\Framework\Component\ComponentRegistrar;
+namespace LiqpayMagento\LiqPay\Api;
 
-ComponentRegistrar::register(
-    ComponentRegistrar::MODULE,
-    'LiqpayMagento_LiqPay',
-    __DIR__
-);
+
+interface LiqPayCallbackInterface
+{
+    /**
+     * @api
+     * @return null
+     */
+    public function callback();
+}

@@ -1,0 +1,10 @@
+<?php /** @var \Perspective\CustomerImage\Block\Customer\Account $block */?>
+<?php
+
+if ($block->customerLoggedIn()){
+    $filePath = $block->getFileUrl();
+    ?>
+    <img src='<?= $filePath ?>' width="25" height="<?= $block->getImageSize() ?>" />
+    <?php
+}
+?>

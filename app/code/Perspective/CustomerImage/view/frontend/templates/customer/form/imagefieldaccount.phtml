@@ -1,0 +1,20 @@
+<fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+    <legend class="legend">
+        <span><?php /* @escapeNotVerified */echo __('Image') ?></span>
+    </legend>
+    <?php if ($url = $block->getFileUrl()): ?>
+        <div class="field">
+            <img src="<?php echo $url?>" height="150" width="150" alt="image" />
+        </div>
+    <?php endif;?>
+
+    <div class="field customer_image ">
+<!--        <label for="customer_image" class="label"><span>--><?php ///* @escapeNotVerified */
+//                echo __('Logo Image') ?><!--</span></label>-->
+        <div class="control">
+            <input type="file" name="customer_image" id="customer_image" title="<?php /* @escapeNotVerified */
+            echo __('Logo Image') ?>" class="input-text" data-validate="{required:false}" accept=".jpg, .jpeg, .png">
+        </div>
+    </div>
+
+</fieldset>

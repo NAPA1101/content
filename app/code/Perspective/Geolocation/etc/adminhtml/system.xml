@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- for add new tab in Magento2 system configuration section -->
+        <tab id="GeolocationTab" translate="label" sortOrder="1">
+            <label>Geolocation</label>
+        </tab>
+        <!-- for create section -->
+        <section id="GeolocationTabSection" translate="label" type="text"
+                 sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Manage Geolocation module</label>
+            <!--   Assign section to tab -->
+            <tab>GeolocationTab</tab>
+            <resource>Perspective_Geolocation::Geolocation_GeolocationSection</resource>
+            <!--  create group for fields in section -->
+            <group id="GeolocationTabGroup" translate="label" type="text"
+                   sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Properties</label>
+                <!--  create  field -->
+                <field id="GeolocationTabModuleStatus" translate="label comment" sortOrder="1"
+                       type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Module Status</label>
+                    <source_model>Perspective\Geolocation\Model\Config\Source\ModuleStatus</source_model>
+                    <comment>enable or disable module</comment>
+                    <validate>validate-no-empty</validate>
+                </field>
+                <field id="GeolocationTabApiKey" translate="label comment" sortOrder="2"
+                       type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>IpStack Api Key</label>
+                    <validate>validate-no-empty</validate>
+                </field>
+                <field id="GeolocationNpApiKey" translate="label comment" sortOrder="3"
+                       type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Nova Poshta Api Key</label>
+                    <validate>validate-no-empty</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

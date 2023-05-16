@@ -1,0 +1,15 @@
+{
+    "nova_poshta_city": {
+        "column": {
+            "entity_id": true,
+            "index": true,
+            "city_name": true,
+            "city_regions": true,
+            "city_name_ua": true,
+            "city_regions_ua": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

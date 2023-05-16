@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="nova_poshta_city" resource="default" engine="innodb" comment="Holidays Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+        <column xsi:type="varchar" name="ref" nullable="false" comment="Ref"/>
+        <column xsi:type="varchar" name="city_name" nullable="false" comment="City name"/>
+        <column xsi:type="varchar" name="city_regions" nullable="false" comment="City region"/>
+        <column xsi:type="varchar" name="city_name_ua" nullable="false" comment="City name ua"/>
+        <column xsi:type="varchar" name="city_regions_ua" nullable="false" comment="City region ua"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

@@ -1,14 +1,12 @@
 <?php
-
-namespace Perspective\Holidays\Helper;
+namespace Perspective\Geolocation\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Store\Model\ScopeInterface;
-
-class Data extends AbstractHelper
+class ModuleStatus extends AbstractHelper
 {
 
-    const XML_PATH_SECOND = 'holidays_section/';
+    const XML_PATH_SECOND = 'GeolocationTabSection/';
 
     /**
      * @param $field
@@ -27,8 +25,8 @@ class Data extends AbstractHelper
      * @param $storeId
      * @return mixed
      */
-    public function getHolidayModule($code, $storeId = null)
+    public function getModuleApi($code, $storeId = null)
     {
-        return $this->getConfigValue(self::XML_PATH_SECOND .'general/'. $code, $storeId);
+        return $this->getConfigValue(self::XML_PATH_SECOND .'GeolocationTabGroup/'. $code, $storeId);
     }
 }

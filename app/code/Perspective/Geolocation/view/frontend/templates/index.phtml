@@ -1,0 +1,60 @@
+<?php
+/**
+ * @var $block \Magento\Framework\View\Element\Block\ArgumentInterface;
+ */
+$viewModel = $block->getData('viewModel');
+$url = $viewModel->getLocationImageUrl();
+?>
+<li>
+    <div data-block="dropdown" class="minicart-wrapper">
+        <a class="action" data-trigger="trigger" style="color: whitesmoke">
+            <img src="<?php echo $url; ?>" alt="location" style="vertical-align: middle; width: 25px; height: 25px;" >
+            <span id="link-label" ></span>
+        </a>
+        <div class="block block-minicart"
+             data-mage-init='{
+            "dropdownDialog": {
+                "appendTo": "[data-block=dropdown]",
+                "triggerTarget":"[data-trigger=trigger]",
+                "timeout": 2000,
+                "closeOnMouseLeave": false,
+                "closeOnEscape": true,
+                "triggerClass": "active",
+                "parentClass": "active",
+                "buttons": []
+            }
+         }'>
+            <div id="minicart-content-wrapper" style="color: black">
+                <table>
+                    <tr>
+                        <th>Your city is <?= $viewModel->getIpStackApi('city');?>?</th>
+                    </tr>
+                    <tr>
+                        <th><button id="Yes">Yes</button></th>
+                        <th><button id="No">No</button></th>
+                    </tr>
+                </table>
+                <div class="popup-container-geolocation" style="display:none">
+                    <input type="text" class="search-input-popup-geolocation" placeholder="Enter search term">
+                    <button class="ok-button-geolocation">Ok</button>
+                    <button class="cancel-button-geolocation">Cancel</button>
+                    <div class="search-results-geolocation"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+<li><div id="show-city" name="<?= $viewModel->getIpStackApi('city') ?>"></div></li>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "location": {
+                        "component": "Perspective_Geolocation/js/location"
+                    }
+                }
+            }
+        }
+    }
+</script>

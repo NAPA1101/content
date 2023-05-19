@@ -1,0 +1,15 @@
+<button data-role="closeBtn" id="rule_button-save-submit-<?= /* @noEscape */
+/**@var $block \Perspective\Widget\Block\Widget\Options\ChooseButtonTemplateHandler */
+$block->getData('cuttedName') ?>" type="button">
+    <?= __('Save') ?>
+</button>
+<script>
+
+    require(['jquery', 'Magento_Ui/js/modal/modal', 'Perspective_Widget/js/prepareDataCondition'], function (jQuery, modal, prepareDataCondition) {
+
+        prepareDataCondition.prepareCondition("<?= /* @noEscape */ $block->getData('cuttedName')?>",
+            "<?= /* @noEscape */ $block->getData('name')?>",
+            "<?= /* @noEscape */ $this->getUrl("widget/conditions_rule/preparedata")?>");
+
+    });
+</script>

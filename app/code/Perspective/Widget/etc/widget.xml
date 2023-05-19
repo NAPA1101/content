@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Perspective\Widget\Block\Widget\Product\ProductList" id="perspective_widget"
+            placeholder_image="Magento_CatalogWidget::images/products_list.png" ttl="86400">
+        <label>Universal widget</label>
+        <description>List of Products</description>
+        <parameters>
+            <!--   First Tab Options     -->
+            <parameter name="delimiter1" xsi:type="block" required="false" visible="true" sort_order="1">
+                <block class="Perspective\Widget\Block\Widget\Options\RenderDelimiter"/>
+            </parameter>
+
+            <parameter name="title" xsi:type="text" required="false" visible="true" sort_order="2">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="show_pager" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="3">
+                <label translate="true">Display Page Control</label>
+            </parameter>
+            <parameter name="products_per_page" xsi:type="text" required="true" visible="true" sort_order="4">
+                <label translate="true">Number of Products per Page</label>
+                <depends>
+                    <parameter name="show_pager" value="1" />
+                </depends>
+                <value>5</value>
+            </parameter>
+            <parameter name="products_count" xsi:type="text" required="true" visible="true" sort_order="5">
+                <label translate="true">Number of Products to Display</label>
+                <value>10</value>
+            </parameter>
+            <parameter name="condition" xsi:type="conditions" visible="true" required="true" sort_order="6"
+                       class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                <label translate="true">Conditions</label>
+                <description><![CDATA[</n><h3><strong>Options for Second Tab</strong></h3><hr style="margin:40px 0;"/>]]></description>
+            </parameter>
+
+            <parameter name="delimiter2" xsi:type="block" required="false" visible="true" sort_order="7">
+                <block class="Perspective\Widget\Block\Widget\Options\RenderDelimiter"/>
+            </parameter>
+            <!--   Second Tab Options     -->
+            <parameter name="title2" xsi:type="text" required="false" visible="true" sort_order="8">
+                <label translate="true">Title for second(2) Tab</label>
+            </parameter>
+            <parameter name="show_pager2" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="9">
+                <label translate="true">Display Page Control for second(2) Tab</label>
+            </parameter>
+            <parameter name="products_per_page2" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label translate="true">Number of Products per Page for second(2) Tab</label>
+                <depends>
+                    <parameter name="show_pager2" value="1" />
+                </depends>
+                <value>5</value>
+            </parameter>
+            <parameter name="products_count2" xsi:type="text" required="true" visible="true" sort_order="11">
+                <label translate="true">Number of Products to Display for second(2) Tab</label>
+                <value>10</value>
+            </parameter>
+            <parameter name="Conditions2Tab" xsi:type="block" required="false" visible="true" sort_order="12">
+                <label translate="true">Conditions for second(2) Tab</label>
+                <block class="Perspective\Widget\Block\Widget\Options\Conditions">
+                    <data>
+                        <item name="condition" xsi:type="array">
+                            <item name="id2" xsi:type="string" translate="true">3</item>
+                        </item>
+                        <item name="type_of_rule_model" xsi:type="string" translate="true">product</item>
+                    </data>
+                </block>
+            </parameter>
+            <!--   Third Tab Options     -->
+            <parameter name="delimiter3" xsi:type="block" required="false" visible="true" sort_order="13">
+                <block class="Perspective\Widget\Block\Widget\Options\RenderDelimiter"/>
+            </parameter>
+
+            <parameter name="title3" xsi:type="text" required="false" visible="true" sort_order="14">
+                <label translate="true">Title for third(3) Tab</label>
+            </parameter>
+            <parameter name="show_pager3" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="15">
+                <label translate="true">Display Page Control for third(3) Tab</label>
+            </parameter>
+            <parameter name="products_per_page3" xsi:type="text" required="true" visible="true" sort_order="16">
+                <label translate="true">Number of Products per Page for third(3) Tab</label>
+                <depends>
+                    <parameter name="show_pager2" value="1" />
+                </depends>
+                <value>5</value>
+            </parameter>
+            <parameter name="products_count3" xsi:type="text" required="true" visible="true" sort_order="17">
+                <label translate="true">Number of Products to Display for third(3) Tab</label>
+                <value>10</value>
+            </parameter>
+            <parameter name="Conditions3Tab" xsi:type="block" required="false" visible="true" sort_order="18">
+                <label translate="true">Conditions for third(3) Tab</label>
+                <block class="Perspective\Widget\Block\Widget\Options\Conditions">
+                    <data>
+                        <item name="condition" xsi:type="array">
+                            <item name="id3" xsi:type="string" translate="true">3</item>
+                        </item>
+                        <item name="type_of_rule_model" xsi:type="string" translate="true">product</item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

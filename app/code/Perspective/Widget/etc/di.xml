@@ -1,0 +1,9 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Perspective\Widget\Block\Widget\Options\ChooseButtonTemplateHandler" type="Magento\Backend\Block\Template">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="template" xsi:type="string">Perspective_Widget::control/prepareConditionButton.phtml</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

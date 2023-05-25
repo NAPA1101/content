@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links">
+            <block name="geolocation.block"
+                   class="Magento\Catalog\Block\Product\View"
+                   template="Perspective_Geolocation::index.phtml">
+                <arguments>
+                    <argument name="viewModel" xsi:type="object">Perspective\Geolocation\ViewModel\Geolocation</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <move element="location_menu_item" destination="header.links" before="-"/>
+    </body>
+</page>

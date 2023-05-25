@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Perspective_Geolocation::city_list" title="Нова пошта міста" module="Perspective_Geolocation" sortOrder="0" parent="Magento_Sales::sales" action="novaposhta/city/index" resource="Perspective_Geolocation::city"/>
+    </menu>
+</config>

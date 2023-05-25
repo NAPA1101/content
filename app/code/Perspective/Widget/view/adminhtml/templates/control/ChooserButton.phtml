@@ -1,0 +1,27 @@
+<?php /**@var $block \Perspective\Widget\Block\Widget\Options\Chooser */ ?>
+<label class="widget-option-label" data-param-name="<?=$block->getElement()->getName()?>" id="<?= $block->getChooserId() ?>label">
+    <?= $block->getLabelForButton() ?>
+</label>
+<div id="' <?= $block->getChooserId() ?>
+            'advice-container" class="hidden"></div>
+<script>
+    require(["prototype", "mage/adminhtml/wysiwyg/widget"], function () {
+
+        (function () {
+            var instantiateChooser = function () {
+                window.<?= $block->getChooserId()?>
+                    = new WysiwygWidget.chooser(
+                    '<?= $block->getChooserId()?>',
+                    '<?= $block->getSourceUrl() ?>',
+                    <?= $block->getConfigJson()?>
+                );
+                if ($("'<?= $block->getChooserId()?>'value")) {
+                    $("'<?= $block->getChooserId()?>'value").advaiceContainer = "'<?= $block->getChooserId()?>'advice-container";
+                }
+            }
+
+            jQuery(instantiateChooser);
+        })
+        ();
+    });
+</script>

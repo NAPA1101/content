@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Perspective_Holidays::holidays" translate="title"
+             title="Holidays" module="Perspective_Holidays" sortOrder="100"
+             resource="Perspective_Holidays::holidays"
+             parent="Magento_Sales::sales_operation" action="holidays/holidays/index"/>
+    </menu>
+</config>

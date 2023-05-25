@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <add id="Perspective_InstantPurchase::purchase" translate="title"
-             title="Instant Purchase" module="Perspective_InstantPurchase" sortOrder="100"
-             resource="Perspective_InstantPurchase::purchase"
-             parent="Magento_Sales::sales_operation" action="purchase/index/index"/>
-    </menu>
-</config>
